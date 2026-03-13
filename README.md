@@ -11,6 +11,7 @@ This project was built as a simple, fast way to scan a folder recursively and pr
 - Prints the full path for each match
 - Skips permission-denied folders instead of crashing
 - Supports case-insensitive search with `-i`
+- Prints total search time at the end
 
 ## Build
 
@@ -50,6 +51,7 @@ Found: C:\Projects\App\main.cpp
 Found: C:\Projects\Tools\main.cpp
 
 2 matches found.
+Search time: 15 ms
 ```
 
 ## Notes on code style
