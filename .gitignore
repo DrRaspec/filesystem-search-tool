@@ -1,0 +1,13 @@
+*.exe
+*.out
+*.o
+*.obj
+*.dll
+*.a
+*.lib
+*.pdb
+*.ilk
+
+build/
+bin/
+dist/
