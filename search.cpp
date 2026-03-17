@@ -75,6 +75,7 @@ void scan(const fs::path &root, const std::string &target,
         while (it != end) {
             const fs::directory_entry &entry = *it;
             const fs::path entry_path = entry.path();
+            std::error_code is_dir_ec; // ← declared here, before first use
 
             const std::string filename = entry_path.filename().string();
             bool found = false;
@@ -86,11 +87,12 @@ void scan(const fs::path &root, const std::string &target,
             }
 
             if (found) {
-                std::cout << "Found: " << entry_path.string() << '\n';
+                std::string type =
+                    entry.is_directory(is_dir_ec) ? "[DIR] " : "[FILE]";
+                std::cout << type << " Found: " << entry_path.string() << '\n';
                 ++match_count;
             }
 
-            std::error_code is_dir_ec;
             if (entry.is_directory(is_dir_ec) && !is_dir_ec &&
                 !should_skip_directory(entry_path)) {
                 pending_dirs.push_back(entry_path);
